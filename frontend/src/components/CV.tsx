@@ -3,24 +3,42 @@ import { useSelector } from "react-redux"
 import { FaAddressBook } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FcPhoneAndroid } from "react-icons/fc";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { usePDF } from "react-to-pdf";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 
 function CV(){
     const cvData = useSelector((state) => state.createCv)    
-    const cvRef = useRef(null);
-    // const { toPDF } = usePDF({ filename: "cv.pdf" });     
-    const { toPDF } = usePDF({ filename: "cv.pdf", targetRef: cvRef });
-        return ( 
+    const cvRef = useRef();
+    const downloadPDF = async () => {
+        if (!cvRef.current) {
+            console.error("CV element not found");
+            return;
+        }
+
+        const canvas = await html2canvas(cvRef.current, { scale: 4});
+        const imgData = canvas.toDataURL("image/png");
+
+        const pdf = new jsPDF("p", "mm", "a4");
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+
+        pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("CV.pdf");
+        console.log("this.com");
+        
+    };
+     return ( 
             <>
             <button
                 className="px-4 py-2 bg-blue-600 text-white rounded-lg fixed top-4 right-4 z-50"
-                onClick={() => toPDF()} >
+                onClick={() =>downloadPDF()} >
                 Download PDF
             </button>
-            <div className="hidden md:flex  min-h-screen max-h-fit bg-green-200  justify-center items-center">
-        <div ref={cvRef} className="w-fit h-fit mx-auto flex justify-center items-stretch m-4">
-            <div  className="w-fit md:w-[30%] lg:w-[23%] xl:w-[16%]  bg-gray-700 m p-4 text-white flex flex-col gap-4 " >
+            <div className="hidden md:flex overflow-scroll min-h-screen max-h-fit bg-green-200  justify-center items-center">
+        <div  ref={cvRef} className="w-fit h-fit mx-auto flex justify-center items-stretch m-4">
+            <div  className="w-fit md:w-[30%] lg:w-[23%] xl:w-[16%] inner-container  m p-4 text-white flex flex-col gap-4 " >
                 <h1 className="text-3xl font-bold">
                     {cvData.name}
                 </h1>
@@ -101,49 +119,10 @@ function CV(){
                         ))}
                     </div>
                 </div>    
-
-                {/* exmm */}
-                {/* <div>
-                    <h1 className="border-b-1">Education</h1>
-                    <div className="flex flex-col gap-4 mt-4">
-                        {cvData.education.map((education,index)=>(
-                            <div key={index} className="flex flex-col gap-2">
-                                <h2 className="text-xl">{education.school}</h2>
-                                <p className="text-[1rem]">{education.degree}</p>
-                                <p className="text-[1rem]">{education.startDate} - {education.endDate}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div> 
-                <div>
-                    <h1 className="border-b-1">Education</h1>
-                    <div className="flex flex-col gap-4 mt-4">
-                        {cvData.education.map((education,index)=>(
-                            <div key={index} className="flex flex-col gap-2">
-                                <h2 className="text-xl">{education.school}</h2>
-                                <p className="text-[1rem]">{education.degree}</p>
-                                <p className="text-[1rem]">{education.startDate} - {education.endDate}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div> 
-                <div>
-                    <h1 className="border-b-1">Education</h1>
-                    <div className="flex flex-col gap-4 mt-4">
-                        {cvData.education.map((education,index)=>(
-                            <div key={index} className="flex flex-col gap-2">
-                                <h2 className="text-xl">{education.school}</h2>
-                                <p className="text-[1rem]">{education.degree}</p>
-                                <p className="text-[1rem]">{education.startDate} - {education.endDate}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>    */}
-                          {/*  end debu*/}
             </div>
         </div>
         </div>
-        {/* <div className="md:hidden text-white h-screen w-screen flex items-center justify-center">Please view on laptop or tablet bigger than 600px for better experience</div> */}
+        <div  className="flex md:hidden">Please view on laptop or tablet bigger than 600px for better experience</div>
         </>
 
 
