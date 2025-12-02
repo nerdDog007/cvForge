@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import CV from "./CV";
+import {motion} from "framer-motion"
 
 const Hero = () => {
     const [count, setCount] = useState(293)
@@ -9,11 +10,18 @@ const Hero = () => {
       }, 5000)
     },[count]);
   return (
-    <main className="flex items-cente w-screen  md:w-[95%] lg:w-[90%] xl:w-[80%] mx-auto flex-wrap ">
-        <section className="flex flex-col items-center justify-center w-full md:w-1/2 lg:w-1/3 xl:w-1/4 gap-6">
+    <main className="flex items-center w-full md:w-[95%] lg:w-[90%] xl:w-[80%] mx-auto flex-wrap">
+        <section className="flex flex-col items-center justify-center w-full md:w-1/2 lg:w-1/3 xl:w-1/4 gap-6 pb-4">
             <div className="flex items-center gap-2">
-                <p className="text-blue-500 w-2 h-2 rounded-full bg-green-400 block">
-                </p>
+                <motion.p 
+                animate={{opacity: [0, 1, 0]}}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="text-blue-500 w-2 h-2 rounded-full bg-green-400 block">
+                </motion.p>
                 <p className="font-bold">{count}</p>
                 <p>resumes created today</p>
 
@@ -33,13 +41,16 @@ const Hero = () => {
                 Improve My Cv
             </button>
         </section>
-
-        <section className="flex flex-col items-end  justify-center w-full md:w-1/2  lg:w-2/3 xl:w-3/4 gap-6">
+        <motion.section 
+        initial={{opacity: 0}}
+        exit={{opacity: 0}}
+        animate={{opacity: [0, 0, 1]}}
+        className="flex flex-col items-end  justify-center w-full md:w-1/2  lg:w-2/3 xl:w-3/4 gap-6">
                 <CV />
-        </section>
-
-        <section>
-
+        </motion.section>
+        <section className="flex items-center justify-center w-full font-semibold text-2xl">
+            <h1>Our customers have been hired at:
+            </h1>
         </section>
     </main>
   )

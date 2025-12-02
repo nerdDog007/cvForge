@@ -3,10 +3,15 @@
  
 *,*::before,*::after{
     box-sizing: border-box;
+    line-height: 1.2;
 }
 
 body{
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+}
+
+.this{
+    @apply h-3 w-3  rounded-full;
 }
