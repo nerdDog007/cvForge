@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import CV from "./CV";
+import CV from "./CvImage";
 import {motion} from "framer-motion"
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
       }, 5000)
     },[count]);
   return (
-    <main className="flex items-center w-full md:w-[95%] lg:w-[90%] xl:w-[80%] mx-auto flex-wrap">
+    <main className="flex items-center w-full md:w-[95%] lg:w-[90%] xl:w-[80%] mx-auto flex-wrap gap-6 md:gap-0">
         <section className="flex flex-col items-center justify-center w-full md:w-1/2 lg:w-1/3 xl:w-1/4 gap-6 pb-4">
             <div className="flex items-center gap-2">
                 <motion.p 
@@ -48,9 +48,16 @@ const Hero = () => {
         className="flex flex-col items-end  justify-center w-full md:w-1/2  lg:w-2/3 xl:w-3/4 gap-6">
                 <CV />
         </motion.section>
-        <section className="flex items-center justify-center w-full font-semibold text-2xl">
-            <h1>Our customers have been hired at:
+        <section className="flex flex-col md:flex-row gap-4 items-center justify-center w-full font-medium text-[1rem] md:text-2xl">
+            <h1 className="font-[500] text-xl">Our customers have been hired at:
             </h1>
+            <div className="opacity-35 flex gap-4 text-[.9rem] md:Text-xl">
+            <p>Google</p>
+            <p>Netflix</p>
+            <p>Meta</p>
+            <p>Amazon</p>
+            <p>Apple</p>
+            </div>
         </section>
     </main>
   )

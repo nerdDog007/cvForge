@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 interface CreateCvState {
-  objective: string;
   contact: {
     website: string;
     email: string;
@@ -14,29 +13,70 @@ interface CreateCvState {
   name: string;
   title: string;
   description: string;
-  experience: Array<string>;
-  projects: Array<string>;
-  education: Array<string>;
+  experience: [{
+    company: string;
+    position: string;
+    startDate: string;
+    endDate: string;
+    summary: string;
+    highlights: string[];
+  }]
+  projects: [{
+    name: string;
+    link: string;
+    description: string[];
+    technologies: string[];
+  }];
+  education:[{
+    school: string;
+    degree: string;
+    startDate: string;
+    endDate: string;
+  }];
 }
 
 const initialState: CreateCvState = {
-  objective: "lorem ipsum skfaksd kbskjasd kasdasd aksdbaskdba kasdbaskdb aksdbasbkd", 
-  contact: {
-    website: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-    address: ""
-  },
-  education: [],
-  skills: [],
-  name: "",
-  experience: [],
-  projects: [],
-  description: "",
-  title: "",
+  experience: [{
+    company: "Example Corp",
+    position: "Full Stack Developer",
+    startDate: "2022-01",
+    endDate: "2023-01",
+    summary: "Lorem lorem lorem ldfds skdf  kaf kndfnksd asldkmasd aksjdnasdkn aksdnnads. lorem lorem loren.",
+    highlights: ["Improved UI performance", "Built reusable components"],
+  }],
+contact:{
+  website: "https://example.com",
+  email: "example@gmail.com",
+  phone: "+977-9800000000",
+  linkedin: "linkedin.com/in/example",
+  github: "github.com/example",
+  address: "Kathmandu, Nepal",
+},
+  education: [{
+    school: "Nepal Engineering College",
+    degree: "BSc. Computer Science",
+    startDate: "2019",
+    endDate: "2023",
+  }],
+
+  skills: ["React", "TailwindCSS", "JavaScript","Node.js","Express.js","MongoDB","PostgreSQL","MySQL"],
+
+  name: "Sandesh Kc",
+
+  projects:[ {
+    name: "Rotten Tomatoes Clone",
+    link: "https://github.com/sandeshkc/rotten-tomatoes-clone",
+    description: [
+      "Built a modern portfolio with animations",
+      "Responsive layout using Tailwind CSS",
+    ],
+    technologies: ["React", "Framer Motion", "TailwindCSS"],
+  }],
+
+  description: "Highly motivated developer passionate about web technologies.asdkas kaksjdn kajsd aksdjn",
+  title: "Full Stack Developer",
 };
+
 
 export const createCvSlice = createSlice({
   name: "createCv",
