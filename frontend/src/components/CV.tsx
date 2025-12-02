@@ -3,15 +3,24 @@ import { useSelector } from "react-redux"
 import { FaAddressBook } from "react-icons/fa";
 import { TfiEmail } from "react-icons/tfi";
 import { FcPhoneAndroid } from "react-icons/fc";
-function CV(){
-    const cvData = useSelector((state) => state.createCv)
+import { useRef } from "react";
+import { usePDF } from "react-to-pdf";
 
-    console.log(cvData);
-    
-        return (
-            <div className="w-[100%] overflow-scroll min-h-screen max-h-fit bg-green-200 flex justify-center items-center">
-        <div className="w-fit h-fit overflow-scroll bg-red-300 mx-auto flex justify-center items-stretch m-4">
-            <div className="w-fit lg:w-[40%]  bg-gray-700 m p-4 text-white flex flex-col gap-4 " >
+function CV(){
+    const cvData = useSelector((state) => state.createCv)    
+    const cvRef = useRef(null);
+    // const { toPDF } = usePDF({ filename: "cv.pdf" });     
+    const { toPDF } = usePDF({ filename: "cv.pdf", targetRef: cvRef });
+        return ( 
+            <>
+            <button
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg fixed top-4 right-4 z-50"
+                onClick={() => toPDF()} >
+                Download PDF
+            </button>
+            <div className="hidden md:flex  min-h-screen max-h-fit bg-green-200  justify-center items-center">
+        <div ref={cvRef} className="w-fit h-fit mx-auto flex justify-center items-stretch m-4">
+            <div  className="w-fit md:w-[30%] lg:w-[23%] xl:w-[16%]  bg-gray-700 m p-4 text-white flex flex-col gap-4 " >
                 <h1 className="text-3xl font-bold">
                     {cvData.name}
                 </h1>
@@ -40,7 +49,7 @@ function CV(){
                     </ol>
                 </div>
             </div>
-            <div className="w-[70%] h-full min-h-[90vh] bg-white p-4 n flex flex-col gap-8 justify-between overflow-x-scroll">
+            <div className="w-fit md:w-[50%] lg:w-[45%] xl:w-[28%] h-full min-h-[90vh] bg-white p-4 n flex flex-col gap-8 justify-between overflow-x-scroll">
                 <div className="">
                     <h1 className="text-xl border-b-1 pb-2">Summary</h1>
                     <p className="mt-4 text-[1rem] font-[300]"> {cvData.description} {cvData.description} kdjsdkj kasjdansd kasdjn eouqweoi aiwud askdj </p>
@@ -58,7 +67,6 @@ function CV(){
                             ))}
                         </div>
                 </div>
-                 
                 <div>
                     <h1 className="border-b-1">Projects</h1>
                     <div className="flex flex-col gap-4 mt-4">
@@ -66,7 +74,6 @@ function CV(){
                             <div key={index} className="flex flex-col gap-2">
                                 <h2 className="text-xl">{project.name}</h2>
                                 <p className="text-[1rem]">{project.link}</p>
-                                {/* <p className="text-[1rem]">{project.description}</p> */}
                                 {
                                     project.description.map((description,index)=>(
                                         <p key={index} className="text-[1rem]"> - {description}</p>
@@ -136,6 +143,10 @@ function CV(){
             </div>
         </div>
         </div>
+        {/* <div className="md:hidden text-white h-screen w-screen flex items-center justify-center">Please view on laptop or tablet bigger than 600px for better experience</div> */}
+        </>
+
+
     )
 }
 
