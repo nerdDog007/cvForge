@@ -24,7 +24,6 @@ const Hero = () => {
                 </motion.p>
                 <p className="font-bold">{count}</p>
                 <p>resumes created today</p>
-
             </div>
             <h1 className="text-3xl font-bold text-center md:text-5xl">
             Create your CV with an 

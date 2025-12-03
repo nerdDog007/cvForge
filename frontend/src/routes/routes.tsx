@@ -6,12 +6,12 @@ import CreateCv from "../components/CreateCv";
 const routes  = createBrowserRouter([
     {
         path: "/",
-        element:<LandingPage />
+        element:<LandingPage />,
+
     },
     {
-        path: "/createcv",
-        element:<CreateCv />
-    },
+        path:"/cv",
+        element :<CreateCv/>,
+    }
 ])
-
 export default routes

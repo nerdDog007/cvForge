@@ -1,11 +1,19 @@
 import hero from "../assets/scren.png"
 import { TbFileCv } from "react-icons/tb";
 import {motion} from "framer-motion"
+import { useSelector } from "react-redux";
+import CV1 from "./CV1";
+import { CVTemplate } from "./CV1";
 const CV = () => {
+  const {createCv} = useSelector((state) => state)
+  console.log(createCv); 
   return (
     <div className="  w-full  h-full" >
         <div className=" w-1/2 md:w-[50%] lg:w-[35%] xl:w-[30%] flex justify-center items-center relative  mx-auto">
-        <img src={hero} alt="hero" className="w-full " />
+        {/* <img src={hero} alt="hero" className="w-full " /> */}
+        <div className="hidden md:flex overflow-scroll min-h-fit max-h-fit w-full  justify-center items-center">
+            <CVTemplate cvData={createCv}/>
+        </div>
         <div className="bg-white shadow-2xl  flex gap-1 absolute top-1/2 left-[-10%]">
         <p className="this bg-amber-200"></p>
         <p className="this bg-blue-200"></p>
