@@ -115,10 +115,12 @@ function Info({Icon,text}){
     )
 }
 
-export function CVTemplate({cvData,cvRef}){
+export function CVTemplate({cvData,cvRef,className}){
+    let m ="w-[90%] sm:w-[90%] md:w-[85%] lg:w-[65%] xl:w-[50%]  h-full mx-auto flex justify-center items-stretch m-4"
     return (
-<div  ref={cvRef} className="w-[90%] sm:w-[90%] md:w-[85%] lg:w-[65%] xl:w-[50%]  h-full mx-auto flex justify-center items-stretch m-4">
-            <div  className="inner-container w-[30%] p-4 text-white flex flex-col gap-4 " >
+<div  ref={cvRef} className={className}>
+            <div  className="inner-container w-fit
+             lg:w-[40%] p-4 text-white flex flex-col gap-4 " >
                 <h1 className="text-3xl font-bold">
                     {cvData.name}
                 </h1>
@@ -147,7 +149,7 @@ export function CVTemplate({cvData,cvRef}){
                     </ol>
                 </div>
             </div>
-            <div className=" h-[62%] w-[45%] bg-white p-4 n flex flex-col gap-8 justify-between overflow-x-scroll">
+            <div className=" w-[60%] bg-white p-4 n flex flex-col gap-8 justify-between overflow-x-scroll">
                 <div className="">
                     <h1 className="text-xl border-b-1 pb-2">Summary</h1>
                     <p className="mt-4 text-[1rem] font-[300]"> {cvData.description} {cvData.description} kdjsdkj kasjdansd kasdjn eouqweoi aiwud askdj </p>
@@ -178,7 +180,7 @@ export function CVTemplate({cvData,cvRef}){
                                     ))
                                 }
                                 <p className="mt-2">Tech Stack:</p>
-                                <div className="flex  gap-2">
+                                <div className="flex flex-col  gap-2">
                                 {project.technologies.map((tech,index)=>(
                                     <p key={index} className="text-[1rem]"> - {tech}</p>
                                 ))}

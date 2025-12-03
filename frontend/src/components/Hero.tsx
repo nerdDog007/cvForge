@@ -10,8 +10,8 @@ const Hero = () => {
       }, 5000)
     },[count]);
   return (
-    <main className="flex items-center w-full md:w-[95%] lg:w-[90%] xl:w-[80%] mx-auto flex-wrap gap-6 md:gap-0">
-        <section className="flex flex-col items-center justify-center w-full md:w-1/2 lg:w-1/3 xl:w-1/4 gap-6 pb-4">
+    <main className="flex flex-col items-center justify-center w-screen md:w-[95vw] lg:w-[90vw] xl:w-[80vw] mx-auto flex-wrap gap-6 md:gap-0">
+        <section className="flex flex-col items-center justify-center w-full md:w-full lg:w-1/3 xl:w-1/4 gap-6 pb-4 ">
             <div className="flex items-center gap-2">
                 <motion.p 
                 animate={{opacity: [0, 1, 0]}}
@@ -44,7 +44,7 @@ const Hero = () => {
         initial={{opacity: 0}}
         exit={{opacity: 0}}
         animate={{opacity: [0, 0, 1]}}
-        className="flex flex-col items-end  justify-center w-full md:w-1/2  lg:w-2/3 xl:w-3/4 gap-6">
+        className="flex flex-col items-center  justify-center w-full md:w-full lg:w-full ">
                 <CV />
         </motion.section>
         <section className="flex flex-col md:flex-row gap-4 items-center justify-center w-full font-medium text-[1rem] md:text-2xl">
