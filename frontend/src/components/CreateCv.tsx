@@ -7,7 +7,7 @@ const CreateCv = () => {
   
   return (
     <div className="flex items-center justify-center bg-black ">
-        <CV1 cvData={cvData}/>     
+      
     </div>
   )
 }

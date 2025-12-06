@@ -4,15 +4,15 @@ import {motion} from "framer-motion"
 import { useSelector } from "react-redux";
 import CV1 from "./CV1";
 import { CVTemplate } from "./CV1";
+import { A } from "./Cv2";
 const CV = () => {
   const {createCv} = useSelector((state) => state)
   console.log(createCv); 
   return (
     <div className="  w-full flex items-center justify-center" >
-        <div className=" lg:w-2/4  h-2/3 flex justify-center items-center relative  ">
-        {/* <img src={hero} alt="hero" className="w-full " /> */}
-            <CVTemplate cvData={createCv} className="w-full justify-center flex items-stretch h-100 w-100" />
-
+        <div className="  flex justify-start items-center relative  ">
+        {/* <img src={hero} alt="hero" className="w-full h-full " /> */}
+      <A cvData={createCv} />
         <motion.div
         animate={{
             opacity: [0, 1, 0],

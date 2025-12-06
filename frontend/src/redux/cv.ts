@@ -37,51 +37,44 @@ interface CreateCvState {
 
 const initialState: CreateCvState = {
   experience: [{
-    company: "Example Corp",
-    position: "Full Stack Developer",
-    startDate: "2022-01",
-    endDate: "2023-01",
-    summary: "Lorem lorem lorem ldfds skdf  kaf kndfnksd asldkmasd aksjdnasdkn aksdnnads. lorem lorem loren.",
-    highlights: ["Improved UI performance", "Built reusable components","lorem sdkfj skdfsdfewkf kwewerk kwerwer kwerhwer"],
-  },{
-    company: "Example Corp",
-    position: "Full Stack Developer",
-    startDate: "2022-01",
-    endDate: "2023-01",
-    summary: "Lorem lorem lorem ldfds skdf  kaf kndfnksd asldkmasd aksjdnasdkn aksdnnads. lorem lorem loren.",
-    highlights: ["Improved UI performance", "Built reusable components","lorem sdkfj skdfsdfewkf kwewerk kwerwer kwerhwer"],
+    company: "Company name",
+    position: "",
+    startDate: "",
+    endDate: "",
+    summary: "",
+    highlights: [],
   }],
 contact:{
-  website: "https://example.com",
-  email: "example@gmail.com",
-  phone: "+977-9800000000",
-  linkedin: "linkedin.com/in/example",
-  github: "github.com/example",
-  address: "Kathmandu, Nepal",
+  website: "",
+  email: "",
+  phone: "",
+  linkedin: "",
+  github: "",
+  address: "",
 },
   education: [{
-    school: "Nepal Engineering College",
-    degree: "BSc. Computer Science",
-    startDate: "2019",
-    endDate: "2023",
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
   }],
 
-  skills: ["React", "TailwindCSS", "JavaScript","Node.js","Express.js","MongoDB","PostgreSQL","MySQL"],
+  skills: ["", "", "","","","","",""],
 
-  name: "Sandesh Kc",
+  name: "",
 
   projects:[ {
-    name: "Rotten Tomatoes Clone",
-    link: "https://github.com/sandeshkc/rotten-tomatoes-clone",
+    name: "",
+    link: "",
     description: [
-      "Built a modern portfolio with animations",
-      "Responsive layout using Tailwind CSS",
+      "",
+      "",
     ],
-    technologies: ["React", "Framer Motion", "TailwindCSS"],
+    technologies: ["", "", ""],
   }],
 
-  description: "Highly motivated developer passionate about web technologies.asdkas kaksjdn kajsd aksdjn",
-  title: "Full Stack Developer",
+  description: " ",
+  title: "",
 };
 
 

@@ -15,7 +15,7 @@ function CV({cvData}){
                 onClick={() =>downloadPDF(cvRef)} >
                 Download PDF
             </button>
-            <div className="hidden md:flex overflow-scroll min-h-screen min-w-screen max-h-fit bg-green-200  justify-center items-center">
+            <div ref={cvRef} className=" md:flex overflow-scroll min-h-screen min-w-screen max-h-fit   justify-center items-center">
         {/* <div  ref={cvRef} className="w-[90%] sm:w-[90%] md:w-[85%] lg:w-[65%] xl:w-[50%]  h-full mx-auto flex justify-center items-stretch m-4">
             <div  className="inner-container w-[38%] p-4 text-white flex flex-col gap-4 " >
                 <h1 className="text-3xl font-bold">
@@ -100,9 +100,8 @@ function CV({cvData}){
                 </div>    
             </div>
         </div> */}
-        <CVTemplate cvData={cvData} cvRef={cvRef}/>
+        <CVTemplate cvData={cvData} className={"w-full flex justify-center md:w-[70%] lg:w-[60%] xl:w-[45%]"}/>
         </div>
-        <div  className="flex md:hidden h-screen w-screen text-white justify-center items-center">Please view on laptop or tablet bigger than 600px for better experience</div>
         </>
     )
 }
@@ -115,26 +114,26 @@ function Info({Icon,text}){
     )
 }
 
-export function CVTemplate({cvData,cvRef,className}){
+export function CVTemplate({className}){
     let m ="w-[90%] sm:w-[90%] md:w-[85%] lg:w-[65%] xl:w-[50%]  h-full mx-auto flex justify-center items-stretch m-4"
     return (
-<div  ref={cvRef} className={className}>
+<div  className={`${className} flex`}>
             <div  className="inner-container w-fit
              lg:w-[40%] p-4 text-white flex flex-col gap-4 " >
                 <h1 className="text-3xl font-bold">
-                    {cvData.name}
+                    name
                 </h1>
                 <h2 className="text-[1rem] ">
-                    {cvData.title}
+                    job title
                 </h2>
                 <div className="flex flex-col gap-2">
                     <h1 className="border-b-1 p-1">Details</h1>
                     <div className="flex flex-col gap-4 mt-4">
-                    <Info Icon={FaGithub} text={cvData.contact.github}/>
-                    <Info Icon={FcPhoneAndroid} text={cvData.contact.phone}/>
-                    <Info Icon={TfiEmail} text={cvData.contact.email}/>
-                    <Info Icon={FaLinkedin} text={cvData.contact.website}/>
-                    <Info Icon={FaAddressBook} text={cvData.contact.address}/>
+                    <Info Icon={FaGithub} text="github link"/>
+                    <Info Icon={FcPhoneAndroid} text="phone number"/>
+                    <Info Icon={TfiEmail} text="email"/>
+                    <Info Icon={FaLinkedin} text="website"/>
+                    <Info Icon={FaAddressBook} text="address"/>
                     </div>
                 </div>
                 <div className="mt-8">
