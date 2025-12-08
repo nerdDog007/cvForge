@@ -10,7 +10,7 @@ const routes  = createBrowserRouter([
 
     },
     {
-        path:"/cv",
+        path:"/createcv",
         element :<CreateCv/>,
     }
 ])

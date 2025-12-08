@@ -1,155 +1,138 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-interface CreateCvState {
-  contact: {
-    website: string;
-    email: string;
-    phone: string;
-    linkedin: string;
-    github: string;
-    address: string;
-  };
-  skills: Array<string>;
-  name: string;
-  title: string;
-  description: string;
-  experience: [{
-    company: string;
-    position: string;
-    startDate: string;
-    endDate: string;
-    summary: string;
-    highlights: string[];
-  }]
-  projects: [{
-    name: string;
-    link: string;
-    description: string[];
-    technologies: string[];
-  }];
-  education:[{
-    school: string;
-    degree: string;
-    startDate: string;
-    endDate: string;
-  }];
-}
 
-const initialState: CreateCvState = {
-  experience: [{
-    company: "Company name",
-    position: "",
-    startDate: "",
-    endDate: "",
-    summary: "",
-    highlights: [],
-  }],
-contact:{
-  website: "",
-  email: "",
-  phone: "",
-  linkedin: "",
-  github: "",
-  address: "",
-},
-  education: [{
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
-  }],
-
-  skills: ["", "", "","","","","",""],
+const initialState = {
+  currentIndex: 0,
 
   name: "",
-
-  projects:[ {
-    name: "",
-    link: "",
-    description: [
-      "",
-      "",
-    ],
-    technologies: ["", "", ""],
-  }],
-
-  description: " ",
   title: "",
+  description: "",
+
+  contact: {
+    website: "",
+    email: "",
+    phone: "",
+    linkedin: "",
+    github: "",
+    address: "",
+  },
+
+  skills: [],
+
+  experience: [
+    {
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      summary: "",
+      highlights: [""],
+    },
+  ],
+
+  projects: [
+    {
+      name: "",
+      link: "",
+      description: [""],
+      technologies: [""],
+    },
+  ],
+
+  education: [
+    {
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+    },
+  ],
 };
 
-
-export const createCvSlice = createSlice({
+const createCvSlice = createSlice({
   name: "createCv",
   initialState,
   reducers: {
-    setName: (state, action: PayloadAction<string>) => {
+    setName: (state, action) => {
       state.name = action.payload;
     },
-    setTitle: (state, action: PayloadAction<string>) => {
+    setTitle: (state, action) => {
       state.title = action.payload;
     },
-    setDescription: (state, action: PayloadAction<string>) => {
+    setDescription: (state, action) => {
       state.description = action.payload;
     },
-    setObjective: (state, action: PayloadAction<string>) => {
-      state.objective = action.payload;
-    },
-    
-    setContact: (state, action: PayloadAction<Partial<CreateCvState['contact']>>) => {
+
+    setContact: (state, action) => {
       state.contact = { ...state.contact, ...action.payload };
     },
-    
-    addSkill: (state, action: PayloadAction<string>) => {
-      state.skills.push(action.payload);
-    },
-    removeSkill: (state, action: PayloadAction<number>) => {
-      state.skills.splice(action.payload, 1);
-    },
-    updateSkill: (state, action: PayloadAction<{ index: number; value: string }>) => {
-      state.skills[action.payload.index] = action.payload.value;
-    },
-    setSkills: (state, action: PayloadAction<Array<string>>) => {
+
+    setSkills: (state, action) => {
       state.skills = action.payload;
     },
-    
-    addExperience: (state, action: PayloadAction<string>) => {
-      state.experience.push(action.payload);
+    addSkill: (state, action) => {
+      state.skills.push(action.payload);
     },
-    removeExperience: (state, action: PayloadAction<number>) => {
+    updateSkill: (state, action) => {
+      const { index, value } = action.payload;
+      state.skills[index] = value;
+    },
+    removeSkill: (state, action) => {
+      state.skills.splice(action.payload, 1);
+    },
+
+    addExperience: (state) => {
+      state.experience.push({
+        company: "",
+        position: "",
+        startDate: "",
+        endDate: "",
+        summary: "",
+        highlights: [""],
+      });
+    },
+
+    removeExperience: (state, action) => {
       state.experience.splice(action.payload, 1);
     },
-    updateExperience: (state, action: PayloadAction<{ index: number; value: string }>) => {
-      state.experience[action.payload.index] = action.payload.value;
+
+    updateExperience: (state, action) => {
+      const { index, value } = action.payload;
+      state.experience[index] = { ...state.experience[index], ...value };
     },
-    setExperience: (state, action: PayloadAction<Array<string>>) => {
-      state.experience = action.payload;
+
+    addProject: (state) => {
+      state.projects.push({
+        name: "",
+        link: "",
+        description: [""],
+        technologies: [""],
+      });
     },
-    
-    addProject: (state, action: PayloadAction<string>) => {
-      state.projects.push(action.payload);
+    updateProject: (state, action) => {
+      const { index, value } = action.payload;
+      state.projects[index] = { ...state.projects[index], ...value };
     },
-    removeProject: (state, action: PayloadAction<number>) => {
+    removeProject: (state, action) => {
       state.projects.splice(action.payload, 1);
     },
-    updateProject: (state, action: PayloadAction<{ index: number; value: string }>) => {
-      state.projects[action.payload.index] = action.payload.value;
+
+    addEducation: (state) => {
+      state.education.push({
+        school: "",
+        degree: "",
+        startDate: "",
+        endDate: "",
+      });
     },
-    setProjects: (state, action: PayloadAction<Array<string>>) => {
-      state.projects = action.payload;
+    updateEducation: (state, action) => {
+      const { index, value } = action.payload;
+      state.education[index] = { ...state.education[index], ...value };
     },
-    addEducation: (state, action: PayloadAction<string>) => {
-      state.education.push(action.payload);
-    },
-    removeEducation: (state, action: PayloadAction<number>) => {
+    removeEducation: (state, action) => {
       state.education.splice(action.payload, 1);
     },
-    updateEducation: (state, action: PayloadAction<{ index: number; value: string }>) => {
-      state.education[action.payload.index] = action.payload.value;
-    },
-    setEducation: (state, action: PayloadAction<Array<string>>) => {
-      state.education = action.payload;
-    },
-      resetCv: () => initialState,
+
+    resetCv: () => initialState,
   },
 });
 
@@ -157,24 +140,20 @@ export const {
   setName,
   setTitle,
   setDescription,
-  setObjective,
   setContact,
-  addSkill,
-  removeSkill,
-  updateSkill,
   setSkills,
+  addSkill,
+  updateSkill,
+  removeSkill,
   addExperience,
-  removeExperience,
   updateExperience,
-  setExperience,
+  removeExperience,
   addProject,
-  removeProject,
   updateProject,
-  setProjects,
+  removeProject,
   addEducation,
-  removeEducation,
   updateEducation,
-  setEducation,
+  removeEducation,
   resetCv,
 } = createCvSlice.actions;
 

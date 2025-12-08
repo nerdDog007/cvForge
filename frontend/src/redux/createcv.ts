@@ -82,11 +82,12 @@ contact:{
 
   description: "Highly motivated developer passionate about web technologies.asdkas kaksjdn kajsd aksdjn",
   title: "Full Stack Developer",
+  currentIndex: 0,
 };
 
 
 export const createCvSlice = createSlice({
-  name: "createCv",
+  name: "cvTemp",
   initialState,
   reducers: {
     setName: (state, action: PayloadAction<string>) => {

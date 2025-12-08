@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import CV from "./CvImage";
 import {motion} from "framer-motion"
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
+  const navigate = useNavigate()
     const [count, setCount] = useState(293)
     useEffect(() => {
       setTimeout(() => {
@@ -35,7 +37,10 @@ const Hero = () => {
             </span>
             </h1>
             <p className="text-center">The first step to a better job? A better CV. Only 2% of CVs win, and yours will be one of them. Build it now!</p>
-            <button className="w-full sm:w-[50%] md:w-full  text-xl text-white px-4 py-2 bg-[#05A2FF] font-semibold rounded-xl">
+            <button className="w-full sm:w-[50%] md:w-full  text-xl text-white px-4 py-2 bg-[#05A2FF] font-semibold rounded-xl"
+            onClick={()=>navigate("/createcv")}
+            
+            >
                 Create A Cv
             </button>
             <button className="w-full sm:w-[50%] md:w-full text-xl  px-4 py-2 text-white border-2 bg-[#05A2FF] border-[#05A2FF] font-semibold rounded-xl">
