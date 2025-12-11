@@ -52,6 +52,12 @@ const createCvSlice = createSlice({
   name: "createCv",
   initialState,
   reducers: {
+    indexIncr: (state) => {
+      state.currentIndex++;
+    },
+    indexDecr: (state) => {
+      state.currentIndex--;
+    },
     setName: (state, action) => {
       state.name = action.payload;
     },
@@ -155,6 +161,8 @@ export const {
   updateEducation,
   removeEducation,
   resetCv,
+  indexIncr,
+  indexDecr,
 } = createCvSlice.actions;
 
 export default createCvSlice.reducer;
