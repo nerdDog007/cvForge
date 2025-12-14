@@ -14,11 +14,10 @@ import { addSkill, updateSkill, removeSkill } from "../redux/cv";
 import { Code, Check, X } from "lucide-react";
 import { setDescription } from "../redux/cv";
 import { FileText, Lightbulb, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CreateCv = () => {
-  const cv = useSelector((state) => state.cv);
-  console.log(cv);
-  
+  const cv = useSelector((state) => state.cv);  
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-50 p-4">
       <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6">
@@ -805,7 +804,7 @@ const Summary = () => {
   const description = useSelector((state) => state.cv.description);
   const name = useSelector((state) => state.cv.name);
   const title = useSelector((state) => state.cv.title);
-
+  const navigate = useNavigate();
   const handleChange = (value: string) => {
     dispatch(setDescription(value));
   };
@@ -948,6 +947,13 @@ const Summary = () => {
           </div>
         </div>
       )}
+      <div className="w-full flex items-center justify-center">
+      <button className="bg-green-300 p-4 text-  font-bold"
+      onClick={()=>navigate("/createcv/cv")}
+      >
+        Proceed
+      </button>
+      </div>
     </div>
   );
 };

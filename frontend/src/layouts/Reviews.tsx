@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const fetchReviews = async () => {
   const response = await fetch(
@@ -13,6 +14,7 @@ const Reviews = () => {
     queryKey: ["reviews"],
     queryFn: fetchReviews,
   });
+  const navigate = useNavigate();
 
   if (isLoading) return <p className="text-black">Loading...</p>;
 
@@ -20,7 +22,9 @@ const Reviews = () => {
     <div className="flex flex-col items-center justify-center w-screen mt-4 bg-white">
       <div className="bg-purple-700 md:text-xl text-[1rem] font-semibold p-6 rounded-2xl w-[100vw] lg:w-[90vw] flex-wrap flex items-center justify-center lg:justify-between gap-6 text-white ">
         <p>1209 people are creating their Resume right now</p>
-        <p className="text-center w-fit rounded-2xl text-[1rem] bg-[#05A2FF] text-white p-2">
+        <p className="text-center w-fit rounded-2xl text-[1rem] bg-[#05A2FF] text-white p-2"
+        onClick={()=>navigate("/createcv")}
+        >
           Create My Resume
         </p>
       </div>

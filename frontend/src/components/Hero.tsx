@@ -51,10 +51,10 @@ const Hero = () => {
         initial={{opacity: 0}}
         exit={{opacity: 0}}
         animate={{opacity: [0, 0, 1]}}
-        className="flex flex-col items-center  justify-center w-full sm:w-fit ">
+        className="flex flex-col items-center  justify-center w-full md:w-full lg:w-2/3 xl:w-3/4 ">
                 <CV />
         </motion.section>
-        <section className="flex flex-col md:flex-row gap-4 items-center justify-center w-full font-medium text-[1rem] md:text-2xl">
+        <section className="flex flex-col md:flex-row gap-4 mt-6 items-center justify-center w-full font-medium text-[1rem] md:text-2xl">
             <h1 className="font-[500] text-xl">Our customers have been hired at:
             </h1>
             <div className="opacity-35 flex gap-4 text-[.9rem] md:Text-xl">

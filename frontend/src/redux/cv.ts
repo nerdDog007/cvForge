@@ -5,7 +5,7 @@ const initialState = {
 
   name: "",
   title: "",
-  description: "",
+  description: "  ",
 
   contact: {
     website: "",
@@ -25,16 +25,16 @@ const initialState = {
       startDate: "",
       endDate: "",
       summary: "",
-      highlights: [""],
+      highlights: ["", "", "", "", ""],
     },
   ],
 
   projects: [
     {
-      name: "",
+      name: " ",
       link: "",
       description: [""],
-      technologies: [""],
+      technologies: ["","","","","",""],
     },
   ],
 
@@ -42,7 +42,7 @@ const initialState = {
     {
       school: "",
       degree: "",
-      startDate: "",
+      startDate:"",
       endDate: "",
     },
   ],

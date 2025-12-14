@@ -24,3 +24,18 @@ body{
 .mn > li{
     @apply flex items-center gap-2;
 }
+
+.v{
+    color:white;
+}
+.u{
+    background-color:black;
+}
+
+.t{
+    background-color:purple;
+}
+
+.y{
+    background-color:green;
+}
